@@ -7,18 +7,17 @@ import { Search, User, ShoppingBag, Menu, X } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 
 const NAV_LINKS = [
-  { name: "New Drops", href: "/category/new-drops" },
-  { name: "Sneakers", href: "/category/sneakers" },
-  { name: "Apparel", href: "/category/apparel" },
-  { name: "Accessories", href: "/category/accessories" },
-  { name: "Upcoming", href: "/drops" },
-  { name: "Sale", href: "/category/sale", isSale: true },
+  { name: "New Drops", href: "/new-drops" },
+  { name: "Sneakers", href: "/sneakers" },
+  { name: "Apparel", href: "/apparel" },
+  { name: "Accessories", href: "/accessories" },
+  { name: "Sale", href: "/sale", isSale: true },
 ];
 
 export const Navbar: React.FC = () => {
   const pathname = usePathname();
   const router = useRouter();
-  const { totalItems, openCart } = useCart();
+  const { totalItems } = useCart();
 
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -26,7 +25,7 @@ export const Navbar: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [prevPathname, setPrevPathname] = useState(pathname);
 
-  // Close menus when route changes (React-idiomatic render-phase adjustment)
+  
   if (prevPathname !== pathname) {
     setPrevPathname(pathname);
     setIsMobileMenuOpen(false);
@@ -44,7 +43,7 @@ export const Navbar: React.FC = () => {
       }
     };
 
-    // Initial check
+  
     handleScroll();
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -60,12 +59,12 @@ export const Navbar: React.FC = () => {
     }
   };
 
-  // Determine navbar background state
+ 
   const isSolid = isScrolled || !isHomepage || isMobileMenuOpen;
 
   return (
     <header
-      className={`sticky top-0 z-40 w-full transition-all duration-300 ${
+      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
         isSolid
           ? "bg-black/95 text-white shadow-xl shadow-black/40 border-b border-neutral-800 backdrop-blur-md"
           : "bg-linear-to-b from-black/80 via-black/40 to-transparent text-white"
@@ -73,7 +72,7 @@ export const Navbar: React.FC = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          {/* Left: Brand Logo */}
+         
           <div className="shrink-0">
             <Link
               href="/"
@@ -89,7 +88,7 @@ export const Navbar: React.FC = () => {
             </Link>
           </div>
 
-          {/* Center: Desktop Nav Links */}
+         
           <nav className="hidden md:flex items-center space-x-8">
             {NAV_LINKS.map((link) => {
               const isActive = pathname === link.href;
@@ -118,9 +117,9 @@ export const Navbar: React.FC = () => {
             })}
           </nav>
 
-          {/* Right: Actions (Search, Account, Cart, Mobile Toggle) */}
+         
           <div className="flex items-center space-x-4 sm:space-x-6">
-            {/* Search Button */}
+           
             <div className="relative">
               <button
                 type="button"
@@ -131,7 +130,7 @@ export const Navbar: React.FC = () => {
                 <Search className="w-5 h-5" />
               </button>
 
-              {/* Expandable Search Input */}
+            
               {isSearchOpen && (
                 <div className="absolute right-0 mt-3 w-72 sm:w-80 bg-neutral-950 border border-neutral-800 rounded-none shadow-2xl p-2 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
                   <form onSubmit={handleSearchSubmit} className="flex items-center">
@@ -154,7 +153,7 @@ export const Navbar: React.FC = () => {
               )}
             </div>
 
-            {/* Account Icon */}
+            
             <Link
               href="/account"
               aria-label="Account"
@@ -163,11 +162,10 @@ export const Navbar: React.FC = () => {
               <User className="w-5 h-5" />
             </Link>
 
-            {/* Cart Icon Trigger for CartDrawer */}
-            <button
-              type="button"
-              onClick={openCart}
-              aria-label="Open Shopping Cart"
+            
+            <Link
+              href="/cart"
+              aria-label="Shopping Cart"
               className="relative p-2 text-neutral-300 hover:text-orange-500 hover:scale-110 active:scale-95 transition-all duration-200 focus:outline-none group"
             >
               <ShoppingBag className="w-5 h-5" />
@@ -176,9 +174,9 @@ export const Navbar: React.FC = () => {
                   {totalItems > 99 ? "99+" : totalItems}
                 </span>
               )}
-            </button>
+            </Link>
 
-            {/* Mobile Menu Toggle Button */}
+           
             <button
               type="button"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -195,7 +193,7 @@ export const Navbar: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Drawer Menu */}
+      
       {isMobileMenuOpen && (
         <div className="md:hidden bg-neutral-950/98 border-t border-neutral-800 px-6 pt-4 pb-8 space-y-4 backdrop-blur-xl animate-in slide-in-from-top-4 duration-300">
           <div className="pt-2 pb-1">
@@ -246,17 +244,13 @@ export const Navbar: React.FC = () => {
               <User className="w-4 h-4" />
               <span>My Account</span>
             </Link>
-            <button
-              type="button"
-              onClick={() => {
-                setIsMobileMenuOpen(false);
-                openCart();
-              }}
+            <Link
+              href="/cart"
               className="flex items-center gap-2 hover:text-orange-500 transition-colors"
             >
               <ShoppingBag className="w-4 h-4" />
               <span>Cart ({totalItems})</span>
-            </button>
+            </Link>
           </div>
         </div>
       )}

@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight, Flame, ShieldAlert } from "lucide-react";
 
 export const Hero: React.FC = () => {
-  // Animation variants for smooth staggered entrance
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -32,7 +32,7 @@ export const Hero: React.FC = () => {
 
   return (
     <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-black -mt-20">
-      {/* Background Image Container with Unsplash Streetwear/Sneaker Visual */}
+   
       <div className="absolute inset-0 z-0">
         <div
           className="w-full h-full bg-cover bg-center bg-no-repeat transition-transform duration-1000 scale-100"
@@ -41,12 +41,12 @@ export const Hero: React.FC = () => {
           }}
         />
 
-        {/* Multi-layered Dark Overlays for Extreme Contrast */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/75 to-black" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-black/60 to-black" />
+       
+        <div className="absolute inset-0 bg-linear-to-b from-black/85 via-black/75 to-black" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,var(--tw-gradient-stops))] from-transparent via-black/60 to-black" />
 
         {/* Ambient Electric Orange Atmospheric Glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[350px] bg-orange-500/15 rounded-full blur-[150px] pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-137.5 h-87.5 bg-orange-500/15 rounded-full blur-[150px] pointer-events-none" />
 
         {/* Subtle Streetwear Grid Texture */}
         <div
@@ -89,7 +89,7 @@ export const Hero: React.FC = () => {
           className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter uppercase leading-[0.9] text-white select-none mb-6"
         >
           STEP INTO <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-100 to-orange-500 drop-shadow-[0_10px_20px_rgba(0,0,0,0.8)]">
+          <span className="text-transparent bg-clip-text bg-linear-to-r from-white via-neutral-100 to-orange-500 drop-shadow-[0_10px_20px_rgba(0,0,0,0.8)]">
             THE DROP
           </span>
         </motion.h1>
@@ -119,7 +119,7 @@ export const Hero: React.FC = () => {
             className="w-full sm:w-auto"
           >
             <Link
-              href="/category/new-drops"
+              href="/new-drops"
               className="w-full sm:w-auto px-9 py-4 bg-orange-500 hover:bg-orange-400 text-black font-black uppercase text-xs sm:text-sm tracking-[0.2em] transition-colors flex items-center justify-center gap-2.5 group shadow-xl shadow-orange-500/25"
             >
               <span>SHOP NOW</span>
@@ -134,7 +134,7 @@ export const Hero: React.FC = () => {
             className="w-full sm:w-auto"
           >
             <Link
-              href="/category/sneakers"
+              href="/sneakers"
               className="w-full sm:w-auto px-8 py-4 bg-neutral-950/80 hover:bg-neutral-900 text-white border border-neutral-800 hover:border-neutral-600 font-bold uppercase text-xs sm:text-sm tracking-[0.2em] transition-all backdrop-blur-sm flex items-center justify-center gap-2"
             >
               <span>EXPLORE SNEAKERS</span>
