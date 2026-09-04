@@ -119,7 +119,7 @@ export const Hero: React.FC = () => {
             className="w-full sm:w-auto"
           >
             <Link
-              href="/new-drops"
+              href="/category/new-drops"
               className="w-full sm:w-auto px-9 py-4 bg-orange-500 hover:bg-orange-400 text-black font-black uppercase text-xs sm:text-sm tracking-[0.2em] transition-colors flex items-center justify-center gap-2.5 group shadow-xl shadow-orange-500/25"
             >
               <span>SHOP NOW</span>
@@ -134,7 +134,7 @@ export const Hero: React.FC = () => {
             className="w-full sm:w-auto"
           >
             <Link
-              href="/sneakers"
+              href="/category/sneakers"
               className="w-full sm:w-auto px-8 py-4 bg-neutral-950/80 hover:bg-neutral-900 text-white border border-neutral-800 hover:border-neutral-600 font-bold uppercase text-xs sm:text-sm tracking-[0.2em] transition-all backdrop-blur-sm flex items-center justify-center gap-2"
             >
               <span>EXPLORE SNEAKERS</span>

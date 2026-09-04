@@ -7,11 +7,12 @@ import { Search, User, ShoppingBag, Menu, X } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 
 const NAV_LINKS = [
-  { name: "New Drops", href: "/new-drops" },
-  { name: "Sneakers", href: "/sneakers" },
-  { name: "Apparel", href: "/apparel" },
-  { name: "Accessories", href: "/accessories" },
-  { name: "Sale", href: "/sale", isSale: true },
+  { name: "New Drops", href: "/category/new-drops" },
+  { name: "Sneakers", href: "/category/sneakers" },
+  { name: "Apparel", href: "/category/apparel" },
+  { name: "Accessories", href: "/category/accessories" },
+  { name: "Upcoming", href: "/drops" },
+  { name: "Sale", href: "/category/sale", isSale: true },
 ];
 
 export const Navbar: React.FC = () => {

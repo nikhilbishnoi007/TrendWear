@@ -1,5 +1,19 @@
 import { Product } from "@/types/product";
 
+export interface UpcomingDrop {
+  id: string;
+  name: string;
+  brand: string;
+  category: string;
+  price: number;
+  releaseDate: string;
+  displayDate: string;
+  edition: string;
+  image: string;
+  description: string;
+  dropType: "RAFFLE DRAW" | "GLOBAL LAUNCH" | "SHOCK DROP";
+}
+
 export const PRODUCTS: Product[] = [
   {
     id: "drop-01",
@@ -184,6 +198,120 @@ export const PRODUCTS: Product[] = [
       "https://images.unsplash.com/photo-1548883354-7622d03aca27?auto=format&fit=crop&w=1200&q=85",
     ],
   },
+  {
+    id: "drop-07",
+    name: "CYBER CROSSBODY CHEST RIG",
+    brand: "SYSTEM 04",
+    category: "Accessories",
+    price: 95,
+    originalPrice: 120,
+    isNewDrop: true,
+    inStock: true,
+    colorway: "MATTE NOIR / VOLT ZIPPER",
+    description:
+      "Low-profile tactical crossbody harness engineered with Fidlock V-buckle, internal padded sleeve for EDC gear, and reflective accents.",
+    details: [
+      "Water-resistant Ballistic 840D Cordura",
+      "Fidlock quick-release magnetic buckle",
+      "Concealed security pocket",
+    ],
+    sizes: [8, 9, 10, 11],
+    availableSizes: [8, 9, 10, 11],
+    image:
+      "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=1200&q=85",
+    secondaryImage:
+      "https://images.unsplash.com/photo-1548883354-7622d03aca27?auto=format&fit=crop&w=1200&q=85",
+    images: [
+      "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1548883354-7622d03aca27?auto=format&fit=crop&w=1200&q=85",
+    ],
+  },
+  {
+    id: "drop-08",
+    name: "REFLECTIVE INDUSTRIAL BEANIE",
+    brand: "RAW STREET",
+    category: "Accessories",
+    price: 45,
+    isNewDrop: false,
+    inStock: true,
+    colorway: "ONYX BLACK / 3M THREAD",
+    description:
+      "Ribbed heavyweight merino wool beanie woven with high-visibility 3M reflective threading and rubberized logo patch.",
+    details: ["100% Merino Wool", "3M reflective interwoven micro-fibers"],
+    sizes: [8, 9, 10],
+    availableSizes: [8, 9, 10],
+    image:
+      "https://images.unsplash.com/photo-1576871337622-98d48d1cf531?auto=format&fit=crop&w=1200&q=85",
+    secondaryImage:
+      "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=1200&q=85",
+    images: [
+      "https://images.unsplash.com/photo-1576871337622-98d48d1cf531?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=1200&q=85",
+    ],
+  },
+];
+
+export const UPCOMING_DROPS: UpcomingDrop[] = [
+  {
+    id: "upcoming-01",
+    name: "TITANIUM RUNNER // ZERO-G",
+    brand: "TRENDWEAR LABS",
+    category: "Sneakers",
+    price: 310,
+    releaseDate: "2026-09-12T15:00:00Z",
+    displayDate: "SEPTEMBER 12, 2026 // 10:00 AM EST",
+    edition: "LIMITED TO 500 PAIRS WORLDWIDE",
+    image:
+      "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=1200&q=85",
+    description:
+      "Constructed with titanium-infused filament knit, carbon torsion arch, and glow-in-the-dark encapsulated nitrogen sole.",
+    dropType: "RAFFLE DRAW",
+  },
+  {
+    id: "upcoming-02",
+    name: "GORE-TEX MODULAR PARKA V4",
+    brand: "SYSTEM 04",
+    category: "Apparel",
+    price: 420,
+    releaseDate: "2026-09-18T17:00:00Z",
+    displayDate: "SEPTEMBER 18, 2026 // 12:00 PM EST",
+    edition: "FALL/WINTER EXCLUSIVE",
+    image:
+      "https://images.unsplash.com/photo-1548883354-7622d03aca27?auto=format&fit=crop&w=1200&q=85",
+    description:
+      "3-layer Gore-Tex Pro shell with detachable storm hood, magnetic storm flap, and integrated sling carry harness.",
+    dropType: "GLOBAL LAUNCH",
+  },
+  {
+    id: "upcoming-03",
+    name: "ACID DUST RETRO HIGH OG",
+    brand: "RAW STREET",
+    category: "Sneakers",
+    price: 260,
+    releaseDate: "2026-09-25T14:00:00Z",
+    displayDate: "SEPTEMBER 25, 2026 // 09:00 AM EST",
+    edition: "SPECIAL EDITION BOX SET",
+    image:
+      "https://images.unsplash.com/photo-1607522370275-f14206abe5d3?auto=format&fit=crop&w=1200&q=85",
+    description:
+      "Hand-distressed full-grain leather upper with cracked vintage swoosh detailing and dual lace options.",
+    dropType: "SHOCK DROP",
+  },
+  {
+    id: "upcoming-04",
+    name: "CYBER MATRIX UTILITY CHEST RIG",
+    brand: "SYSTEM 04",
+    category: "Accessories",
+    price: 110,
+    releaseDate: "2026-10-02T16:00:00Z",
+    displayDate: "OCTOBER 02, 2026 // 11:00 AM EST",
+    edition: "COLLABORATION DROP",
+    image:
+      "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=1200&q=85",
+    description:
+      "Modular dual-compartment chest rig with waterproof laser-cut MOLLE slots and Fidlock magnetic fasteners.",
+    dropType: "GLOBAL LAUNCH",
+  },
 ];
 
 export const getProductById = (id: string | number): Product | undefined => {
@@ -195,4 +323,15 @@ export const getRelatedProducts = (
   limit: number = 4
 ): Product[] => {
   return PRODUCTS.filter((p) => String(p.id) !== String(currentId)).slice(0, limit);
+};
+
+export const getProductsByCategory = (categorySlug: string): Product[] => {
+  const norm = categorySlug.toLowerCase().trim();
+  if (norm === "all") return PRODUCTS;
+  if (norm === "new-drops") return PRODUCTS.filter((p) => p.isNewDrop);
+  if (norm === "sale")
+    return PRODUCTS.filter((p) => p.originalPrice && p.originalPrice > p.price);
+  return PRODUCTS.filter(
+    (p) => p.category?.toLowerCase() === norm || norm.includes(p.category?.toLowerCase() || "")
+  );
 };

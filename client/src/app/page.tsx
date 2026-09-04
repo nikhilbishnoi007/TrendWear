@@ -25,7 +25,7 @@ export default function Home() {
             </h2>
           </div>
           <Link
-            href="/new-drops"
+            href="/category/new-drops"
             className="mt-4 sm:mt-0 text-xs font-mono uppercase tracking-widest text-neutral-400 hover:text-orange-500 flex items-center gap-1 transition-colors"
           >
             <span>VIEW ALL DROPS</span>
