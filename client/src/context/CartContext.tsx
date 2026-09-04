@@ -10,6 +10,7 @@ import React, {
 export interface CartItem {
   id: string | number;
   name: string;
+  brand?: string;
   price: number;
   quantity: number;
   image?: string;

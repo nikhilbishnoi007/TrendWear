@@ -67,13 +67,13 @@ export const Navbar: React.FC = () => {
       className={`sticky top-0 z-50 w-full transition-all duration-300 ${
         isSolid
           ? "bg-black/95 text-white shadow-xl shadow-black/40 border-b border-neutral-800 backdrop-blur-md"
-          : "bg-gradient-to-b from-black/80 via-black/40 to-transparent text-white"
+          : "bg-linear-to-b from-black/80 via-black/40 to-transparent text-white"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Left: Brand Logo */}
-          <div className="flex-shrink-0">
+          <div className="shrink-0">
             <Link
               href="/"
               className="group flex items-center gap-1 font-black text-2xl sm:text-3xl tracking-tighter uppercase select-none"
