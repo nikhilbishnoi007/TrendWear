@@ -3,56 +3,8 @@
 import Link from "next/link";
 import { Sparkles } from "lucide-react";
 import { Hero } from "@/components/Hero";
-import { ProductCard } from "@/components/ProductCard";
-import { Product } from "@/types/product";
-
-const FEATURED_PRODUCTS: Product[] = [
-  {
-    id: "drop-01",
-    name: "CYBERPUNK HIGH 'VOLT'",
-    brand: "TRENDWEAR LABS",
-    category: "Sneakers",
-    price: 240,
-    originalPrice: 280,
-    isNewDrop: true,
-    inStock: true,
-    image: "https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=800&q=80",
-    secondaryImage: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    id: "drop-02",
-    name: "OVERSIZED ACID WASH HOODIE",
-    brand: "RAW STREET",
-    category: "Apparel",
-    price: 130,
-    isNewDrop: true,
-    inStock: true,
-    image: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=800&q=80",
-    secondaryImage: "https://images.unsplash.com/photo-1509967419530-da38b4704bc6?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    id: "drop-03",
-    name: "TACTICAL MODULAR CARGO VEST",
-    brand: "SYSTEM 04",
-    category: "Apparel",
-    price: 175,
-    isNewDrop: false,
-    inStock: true,
-    image: "https://images.unsplash.com/photo-1578587018452-892bacefd3f2?auto=format&fit=crop&w=800&q=80",
-    secondaryImage: "https://images.unsplash.com/photo-1548883354-7622d03aca27?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    id: "drop-04",
-    name: "AIR PHANTOM PROTO-01",
-    brand: "TRENDWEAR LABS",
-    category: "Sneakers",
-    price: 290,
-    isNewDrop: true,
-    inStock: false,
-    image: "https://images.unsplash.com/photo-1514989940723-e8e51635b782?auto=format&fit=crop&w=800&q=80",
-    secondaryImage: "https://images.unsplash.com/photo-1607522370275-f14206abe5d3?auto=format&fit=crop&w=800&q=80",
-  },
-];
+import { ProductGrid } from "@/components/ProductGrid";
+import { PRODUCTS } from "@/data/products";
 
 export default function Home() {
   return (
@@ -81,12 +33,8 @@ export default function Home() {
           </Link>
         </div>
 
-        {/* Responsive Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {FEATURED_PRODUCTS.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
+        {/* Responsive Product Grid with Framer Motion Stagger */}
+        <ProductGrid products={PRODUCTS} />
       </section>
     </div>
   );

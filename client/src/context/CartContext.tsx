@@ -4,6 +4,7 @@ import React, {
   createContext,
   useContext,
   useMemo,
+  useState,
   useSyncExternalStore,
 } from "react";
 
@@ -29,6 +30,10 @@ export type AddToCartInput = Omit<CartItem, "quantity"> & {
 export interface CartContextType {
   cart: CartItem[];
   items: CartItem[];
+  isCartOpen: boolean;
+  setIsCartOpen: (open: boolean) => void;
+  openCart: () => void;
+  closeCart: () => void;
   addToCart: (item: AddToCartInput, quantity?: number) => void;
   removeFromCart: (id: string | number, options?: { size?: string; color?: string }) => void;
   updateQuantity: (id: string | number, quantity: number, options?: { size?: string; color?: string }) => void;
@@ -108,6 +113,10 @@ const isSameItem = (
 
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const cart = useSyncExternalStore(subscribe, getCartSnapshot, getServerSnapshot);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+
+  const openCart = () => setIsCartOpen(true);
+  const closeCart = () => setIsCartOpen(false);
 
   const addToCart = (item: AddToCartInput, quantity: number = 1) => {
     const qtyToAdd = item.quantity && item.quantity > 0 ? item.quantity : quantity;
@@ -181,6 +190,10 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const value: CartContextType = {
     cart,
     items: cart,
+    isCartOpen,
+    setIsCartOpen,
+    openCart,
+    closeCart,
     addToCart,
     removeFromCart,
     updateQuantity,

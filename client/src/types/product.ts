@@ -10,7 +10,10 @@ export interface Product {
   inStock?: boolean;
   isNewDrop?: boolean;
   category?: string;
-  sizes?: string[];
+  colorway?: string;
   colors?: string[];
+  sizes?: (string | number)[];
+  availableSizes?: (string | number)[];
   description?: string;
+  details?: string[];
 }

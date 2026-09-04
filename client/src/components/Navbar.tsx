@@ -17,7 +17,7 @@ const NAV_LINKS = [
 export const Navbar: React.FC = () => {
   const pathname = usePathname();
   const router = useRouter();
-  const { totalItems } = useCart();
+  const { totalItems, openCart } = useCart();
 
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -64,7 +64,7 @@ export const Navbar: React.FC = () => {
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
+      className={`sticky top-0 z-40 w-full transition-all duration-300 ${
         isSolid
           ? "bg-black/95 text-white shadow-xl shadow-black/40 border-b border-neutral-800 backdrop-blur-md"
           : "bg-linear-to-b from-black/80 via-black/40 to-transparent text-white"
@@ -162,10 +162,11 @@ export const Navbar: React.FC = () => {
               <User className="w-5 h-5" />
             </Link>
 
-            {/* Cart Icon with Dynamic Count Badge */}
-            <Link
-              href="/cart"
-              aria-label="Shopping Cart"
+            {/* Cart Icon Trigger for CartDrawer */}
+            <button
+              type="button"
+              onClick={openCart}
+              aria-label="Open Shopping Cart"
               className="relative p-2 text-neutral-300 hover:text-orange-500 hover:scale-110 active:scale-95 transition-all duration-200 focus:outline-none group"
             >
               <ShoppingBag className="w-5 h-5" />
@@ -174,7 +175,7 @@ export const Navbar: React.FC = () => {
                   {totalItems > 99 ? "99+" : totalItems}
                 </span>
               )}
-            </Link>
+            </button>
 
             {/* Mobile Menu Toggle Button */}
             <button
@@ -244,13 +245,17 @@ export const Navbar: React.FC = () => {
               <User className="w-4 h-4" />
               <span>My Account</span>
             </Link>
-            <Link
-              href="/cart"
+            <button
+              type="button"
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                openCart();
+              }}
               className="flex items-center gap-2 hover:text-orange-500 transition-colors"
             >
               <ShoppingBag className="w-4 h-4" />
               <span>Cart ({totalItems})</span>
-            </Link>
+            </button>
           </div>
         </div>
       )}
