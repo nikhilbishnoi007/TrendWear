@@ -123,7 +123,7 @@ export const UpcomingDropsView: React.FC = () => {
 
   return (
     <div className="bg-black text-white min-h-screen pb-24">
-      {/* Header Banner */}
+      
       <section className="relative py-16 border-b border-neutral-900 bg-neutral-950/60 overflow-hidden">
         <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-orange-600/10 rounded-full blur-[140px] pointer-events-none" />
 
@@ -144,7 +144,7 @@ export const UpcomingDropsView: React.FC = () => {
         </div>
       </section>
 
-      {/* Filter Tabs */}
+     
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
         <div className="flex items-center justify-between border-b border-neutral-900 pb-4">
           <div className="flex items-center space-x-2 overflow-x-auto pb-1 scrollbar-none">
@@ -169,7 +169,7 @@ export const UpcomingDropsView: React.FC = () => {
           </span>
         </div>
 
-        {/* Drops Card Grid */}
+    
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-10">
           {filteredDrops.map((drop) => {
             const hasReminder = remindedDrops.includes(drop.id);
@@ -179,9 +179,9 @@ export const UpcomingDropsView: React.FC = () => {
                 key={drop.id}
                 className="group bg-neutral-950 border border-neutral-900 hover:border-neutral-700 transition-all duration-300 flex flex-col justify-between overflow-hidden"
               >
-                {/* Visual Image & Tags */}
+               
                 <div>
-                  <div className="relative aspect-video sm:aspect-[16/10] bg-neutral-900 overflow-hidden">
+                  <div className="relative aspect-video sm:aspect-16/10 bg-neutral-900 overflow-hidden">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={drop.image}
@@ -189,7 +189,7 @@ export const UpcomingDropsView: React.FC = () => {
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100"
                     />
 
-                    {/* Multi-tier Badges */}
+              
                     <div className="absolute top-4 left-4 flex flex-col gap-2 z-10">
                       <span className="bg-orange-500 text-black text-[10px] font-mono font-black uppercase tracking-widest px-2.5 py-1 shadow-md shadow-orange-500/30">
                         {drop.dropType}
@@ -210,7 +210,6 @@ export const UpcomingDropsView: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Drop Info */}
                   <div className="p-6 space-y-3">
                     <div className="text-[11px] font-mono uppercase text-neutral-500 tracking-widest">
                       {`${drop.brand} // ${drop.category}`}
@@ -230,7 +229,7 @@ export const UpcomingDropsView: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Reminder Action Button */}
+         
                 <div className="p-6 pt-0">
                   <button
                     type="button"
@@ -243,7 +242,7 @@ export const UpcomingDropsView: React.FC = () => {
                   >
                     {hasReminder ? (
                       <>
-                        <Check className="w-4 h-4 text-orange-400 stroke-[3]" />
+                        <Check className="w-4 h-4 text-orange-400 stroke-3" />
                         <span>REMINDER SET (ALERT ARMED)</span>
                       </>
                     ) : (
@@ -260,7 +259,7 @@ export const UpcomingDropsView: React.FC = () => {
         </div>
       </div>
 
-      {/* Reminder Alert Modal */}
+
       <AnimatePresence>
         {activeModalDrop && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4">

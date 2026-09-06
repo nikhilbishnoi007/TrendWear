@@ -78,9 +78,9 @@ export const Footer: React.FC = () => {
 
   return (
     <footer className="bg-neutral-950 border-t border-neutral-900 text-white selection:bg-orange-500 selection:text-black">
-      {/* TOP SECTION: Newsletter Signup */}
+ 
       <div className="border-b border-neutral-900 py-16 px-4 sm:px-6 lg:px-8 bg-black/60 relative overflow-hidden">
-        {/* Ambient Orange Glow */}
+      
         <div className="absolute top-1/2 right-1/4 w-80 h-80 bg-orange-600/10 rounded-full blur-[140px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-center relative z-10">
@@ -102,7 +102,7 @@ export const Footer: React.FC = () => {
           <div className="lg:col-span-5">
             {isSubscribed ? (
               <div className="p-4 bg-orange-500/10 border border-orange-500/30 text-orange-400 font-mono text-xs flex items-center gap-3">
-                <Check className="w-5 h-5 text-orange-400 flex-shrink-0" />
+                <Check className="w-5 h-5 text-orange-400 shrink-0" />
                 <div>
                   <div className="font-bold uppercase">YOU&apos;RE ON THE RADAR</div>
                   <div className="text-neutral-400 text-[11px]">
@@ -143,10 +143,10 @@ export const Footer: React.FC = () => {
         </div>
       </div>
 
-      {/* MIDDLE SECTION: Brand Statement & Link Columns */}
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10">
-          {/* Brand Column */}
+     
           <div className="col-span-2 space-y-4">
             <Link
               href="/"
@@ -177,7 +177,7 @@ export const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Nav Link Columns */}
+         
           {FOOTER_COLUMNS.map((column) => (
             <div key={column.title} className="space-y-4">
               <h3 className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-white">
@@ -200,12 +200,12 @@ export const Footer: React.FC = () => {
         </div>
       </div>
 
-      {/* BOTTOM SECTION: Social Icons, Payment Trust, Copyright */}
+   
       <div className="border-t border-neutral-900 bg-black py-8 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-          {/* Social Media Links */}
+        
           <div className="flex items-center space-x-3">
-            {/* Instagram */}
+        
             <a
               href="https://instagram.com"
               target="_blank"
@@ -218,7 +218,7 @@ export const Footer: React.FC = () => {
               </svg>
             </a>
 
-            {/* X / Twitter */}
+            
             <a
               href="https://twitter.com"
               target="_blank"
@@ -231,20 +231,8 @@ export const Footer: React.FC = () => {
               </svg>
             </a>
 
-            {/* YouTube */}
-            <a
-              href="https://youtube.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="YouTube"
-              className="w-9 h-9 bg-neutral-950 hover:bg-neutral-900 border border-neutral-850 hover:border-orange-500 text-neutral-400 hover:text-orange-500 flex items-center justify-center transition-all duration-200"
-            >
-              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-              </svg>
-            </a>
 
-            {/* Global / Network */}
+            
             <a
               href="#"
               aria-label="Global Network"
@@ -254,13 +242,13 @@ export const Footer: React.FC = () => {
             </a>
           </div>
 
-          {/* Security & Authentication Tags */}
+        
           <div className="flex items-center gap-3 text-[11px] font-mono text-neutral-500 uppercase tracking-widest">
             <ShieldCheck className="w-4 h-4 text-orange-500" />
             <span>100% VERIFIED AUTHENTIC & ENCRYPTED CHECKOUT</span>
           </div>
 
-          {/* Copyright */}
+         
           <div className="text-[11px] font-mono text-neutral-500 uppercase tracking-widest text-center md:text-right">
             © {new Date().getFullYear()} TRENDWEAR INC. ALL RIGHTS RESERVED.
           </div>

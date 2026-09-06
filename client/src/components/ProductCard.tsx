@@ -70,13 +70,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       onMouseLeave={() => setIsHovered(false)}
       className={`group relative bg-neutral-950 border border-neutral-900 hover:border-neutral-700 transition-colors duration-300 flex flex-col justify-between overflow-hidden ${className}`}
     >
-      {/* Top Image Showcase Area */}
-      <div className="relative aspect-square sm:aspect-[4/5] w-full overflow-hidden bg-neutral-900 select-none">
+   
+      <div className="relative aspect-square sm:aspect-4/5 w-full overflow-hidden bg-neutral-900 select-none">
         <Link
           href={`/product/${product.id}`}
           className="absolute inset-0 z-0 focus:outline-none"
         >
-          {/* Primary Product Image */}
+
           <motion.img
             src={primaryImage}
             alt={product.name}
@@ -91,7 +91,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             }`}
           />
 
-          {/* Secondary Angle Image (Swaps on hover) */}
+
           {hasSecondaryImage && (
             <motion.img
               src={secondaryImage}
@@ -109,14 +109,14 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           )}
         </Link>
 
-        {/* Badges: "NEW" Badge */}
+   
         {product.isNewDrop && inStock && (
           <div className="absolute top-3 left-3 z-10 bg-orange-500 text-black text-[10px] font-black uppercase tracking-widest px-2.5 py-1 shadow-lg shadow-orange-500/30 pointer-events-none">
             NEW
           </div>
         )}
 
-        {/* "SOLD OUT" Overlay Badge */}
+ 
         {!inStock && (
           <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/60 backdrop-blur-[2px] pointer-events-none">
             <span className="bg-neutral-950/90 text-neutral-300 border border-neutral-700 font-black text-xs uppercase tracking-[0.25em] px-4 py-2 shadow-2xl">
@@ -125,7 +125,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           </div>
         )}
 
-        {/* Wishlist Heart Button (Top Right) */}
+
         <motion.button
           type="button"
           whileHover={{ scale: 1.15 }}
@@ -143,7 +143,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           />
         </motion.button>
 
-        {/* Quick Add Button (Fades / slides up on hover) */}
         {inStock && (
           <div className="absolute bottom-3 inset-x-3 z-20">
             <motion.button
@@ -166,7 +165,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             >
               {isAdded ? (
                 <>
-                  <Check className="w-4 h-4 stroke-[3]" />
+                  <Check className="w-4 h-4 stroke-3" />
                   <span>ADDED TO CART</span>
                 </>
               ) : (
@@ -180,7 +179,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         )}
       </div>
 
-      {/* Product Details Bottom Info */}
+
       <Link
         href={`/product/${product.id}`}
         className="p-4 space-y-2 flex-1 flex flex-col justify-between focus:outline-none"

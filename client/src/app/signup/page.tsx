@@ -45,34 +45,25 @@ export default function SignupPage() {
       confirmPassword?: string;
       agreeTerms?: string;
     } = {};
-
-    // Name validation
     if (!name.trim()) {
       newErrors.name = "Full name is required.";
     }
-
-    // Email validation
     if (!email.trim()) {
       newErrors.email = "Email address is required.";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
       newErrors.email = "Please enter a valid email address.";
     }
-
-    // Password validation
     if (!password) {
       newErrors.password = "Password is required.";
     } else if (password.length < 6) {
       newErrors.password = "Password must be at least 6 characters.";
     }
-
-    // Confirm password validation
     if (!confirmPassword) {
       newErrors.confirmPassword = "Please confirm your password.";
     } else if (password !== confirmPassword) {
       newErrors.confirmPassword = "Passwords do not match.";
     }
 
-    // Terms validation
     if (!agreeTerms) {
       newErrors.agreeTerms = "You must agree to the Terms & Conditions.";
     }
@@ -90,7 +81,6 @@ export default function SignupPage() {
 
     setIsSubmitting(true);
 
-    // Mock local account creation state
     setTimeout(() => {
       setIsSubmitting(false);
       setSignupSuccess(true);
@@ -102,8 +92,7 @@ export default function SignupPage() {
 
   return (
     <div className="min-h-[calc(100vh-5rem)] bg-black text-white flex items-center justify-center px-4 sm:px-6 lg:px-8 py-16 relative overflow-hidden">
-      {/* Ambient Glow */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[350px] bg-orange-600/10 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-137.5 h-87.5 bg-orange-600/10 rounded-full blur-[150px] pointer-events-none" />
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -111,7 +100,6 @@ export default function SignupPage() {
         transition={{ duration: 0.5 }}
         className="w-full max-w-md relative z-10"
       >
-        {/* Brand Header */}
         <div className="text-center space-y-2 mb-8">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-neutral-900 border border-neutral-800 text-orange-500 text-[11px] font-mono tracking-widest uppercase mb-2">
             <Sparkles className="w-3 h-3 text-orange-500" />
@@ -126,8 +114,6 @@ export default function SignupPage() {
             Unlock raffle draws, early access drops, and private lookbooks.
           </p>
         </div>
-
-        {/* Card Container */}
         <div className="bg-neutral-950 border border-neutral-850 p-6 sm:p-8 shadow-2xl space-y-6">
           {signupSuccess ? (
             <div className="py-8 text-center space-y-4">
@@ -145,7 +131,6 @@ export default function SignupPage() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} noValidate className="space-y-4">
-              {/* Full Name Input */}
               <div className="space-y-1.5">
                 <label
                   htmlFor="signup-name"
@@ -172,13 +157,11 @@ export default function SignupPage() {
                 />
                 {errors.name && (
                   <p className="text-[11px] font-mono text-red-400 flex items-center gap-1 pt-0.5">
-                    <AlertCircle className="w-3 h-3 flex-shrink-0" />
+                    <AlertCircle className="w-3 h-3 shrink-0" />
                     <span>{errors.name}</span>
                   </p>
                 )}
               </div>
-
-              {/* Email Input */}
               <div className="space-y-1.5">
                 <label
                   htmlFor="signup-email"
@@ -205,13 +188,11 @@ export default function SignupPage() {
                 />
                 {errors.email && (
                   <p className="text-[11px] font-mono text-red-400 flex items-center gap-1 pt-0.5">
-                    <AlertCircle className="w-3 h-3 flex-shrink-0" />
+                    <AlertCircle className="w-3 h-3 shrink-0" />
                     <span>{errors.email}</span>
                   </p>
                 )}
               </div>
-
-              {/* Password Input */}
               <div className="space-y-1.5">
                 <label
                   htmlFor="signup-password"
@@ -252,13 +233,11 @@ export default function SignupPage() {
                 </div>
                 {errors.password && (
                   <p className="text-[11px] font-mono text-red-400 flex items-center gap-1 pt-0.5">
-                    <AlertCircle className="w-3 h-3 flex-shrink-0" />
+                    <AlertCircle className="w-3 h-3 shrink-0" />
                     <span>{errors.password}</span>
                   </p>
                 )}
               </div>
-
-              {/* Confirm Password Input */}
               <div className="space-y-1.5">
                 <label
                   htmlFor="signup-confirm-password"
@@ -304,13 +283,11 @@ export default function SignupPage() {
                 </div>
                 {errors.confirmPassword && (
                   <p className="text-[11px] font-mono text-red-400 flex items-center gap-1 pt-0.5">
-                    <AlertCircle className="w-3 h-3 flex-shrink-0" />
+                    <AlertCircle className="w-3 h-3 shrink-0" />
                     <span>{errors.confirmPassword}</span>
                   </p>
                 )}
               </div>
-
-              {/* Terms & Conditions Checkbox */}
               <div className="pt-2">
                 <label className="flex items-start gap-3 cursor-pointer select-none">
                   <div
@@ -320,7 +297,7 @@ export default function SignupPage() {
                       if (next && errors.agreeTerms)
                         setErrors((prev) => ({ ...prev, agreeTerms: undefined }));
                     }}
-                    className={`w-4 h-4 border flex items-center justify-center mt-0.5 flex-shrink-0 transition-colors ${
+                    className={`w-4 h-4 border flex items-center justify-center mt-0.5 shrink-0 transition-colors ${
                       agreeTerms
                         ? "bg-orange-500 border-orange-500 text-black"
                         : errors.agreeTerms
@@ -328,7 +305,7 @@ export default function SignupPage() {
                         : "border-neutral-700 bg-neutral-950 hover:border-neutral-500"
                     }`}
                   >
-                    {agreeTerms && <Check className="w-3 h-3 stroke-[3]" />}
+                    {agreeTerms && <Check className="w-3 h-3 stroke-3" />}
                   </div>
                   <span className="text-xs font-mono text-neutral-400 leading-relaxed">
                     I agree to the{" "}
@@ -339,13 +316,11 @@ export default function SignupPage() {
                 </label>
                 {errors.agreeTerms && (
                   <p className="text-[11px] font-mono text-red-400 flex items-center gap-1 pt-1">
-                    <AlertCircle className="w-3 h-3 flex-shrink-0" />
+                    <AlertCircle className="w-3 h-3 shrink-0" />
                     <span>{errors.agreeTerms}</span>
                   </p>
                 )}
               </div>
-
-              {/* Submit Button */}
               <button
                 type="submit"
                 disabled={isSubmitting}
@@ -363,7 +338,7 @@ export default function SignupPage() {
             </form>
           )}
 
-          {/* Switch to Login */}
+         
           <div className="pt-4 border-t border-neutral-900 text-center text-xs font-mono uppercase tracking-wider text-neutral-400">
             <span>ALREADY REGISTERED? </span>
             <Link
@@ -375,7 +350,7 @@ export default function SignupPage() {
           </div>
         </div>
 
-        {/* Security Micro Badge */}
+       
         <div className="mt-6 flex items-center justify-center gap-2 text-[10px] font-mono text-neutral-500 uppercase tracking-widest">
           <ShieldCheck className="w-3.5 h-3.5 text-orange-500" />
           <span>ZERO SPAM // INSTANT UNLOCK</span>

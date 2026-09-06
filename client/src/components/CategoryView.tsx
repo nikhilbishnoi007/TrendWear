@@ -24,7 +24,7 @@ export const CategoryView: React.FC<CategoryViewProps> = ({
   categoryTitle,
   initialProducts,
 }) => {
-  // Extract all unique brands from products
+ 
   const availableBrands = useMemo(() => {
     const brands = new Set<string>();
     initialProducts.forEach((p) => {
@@ -33,12 +33,12 @@ export const CategoryView: React.FC<CategoryViewProps> = ({
     return Array.from(brands);
   }, [initialProducts]);
 
-  // Max price for slider
+
   const maxProductPrice = useMemo(() => {
     return Math.max(...initialProducts.map((p) => p.price), 350);
   }, [initialProducts]);
 
-  // Filter & Sorting States
+
   const [maxPrice, setMaxPrice] = useState<number>(maxProductPrice);
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
   const [selectedSize, setSelectedSize] = useState<string | number | null>(null);
@@ -46,14 +46,13 @@ export const CategoryView: React.FC<CategoryViewProps> = ({
   const [sortBy, setSortBy] = useState<string>("newest");
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
 
-  // Handle Brand Toggle
   const toggleBrand = (brand: string) => {
     setSelectedBrands((prev) =>
       prev.includes(brand) ? prev.filter((b) => b !== brand) : [...prev, brand]
     );
   };
 
-  // Reset Filters
+ 
   const resetFilters = () => {
     setMaxPrice(maxProductPrice);
     setSelectedBrands([]);
@@ -68,19 +67,18 @@ export const CategoryView: React.FC<CategoryViewProps> = ({
     selectedSize !== null ||
     inStockOnly;
 
-  // Filter and sort computation
+
   const filteredProducts = useMemo(() => {
     let result = [...initialProducts];
 
-    // 1. Price filter
+    
     result = result.filter((p) => p.price <= maxPrice);
 
-    // 2. Brand filter
     if (selectedBrands.length > 0) {
       result = result.filter((p) => p.brand && selectedBrands.includes(p.brand));
     }
 
-    // 3. Size filter
+
     if (selectedSize !== null) {
       result = result.filter((p) => {
         const sizes = p.availableSizes ?? p.sizes ?? [];
@@ -88,19 +86,19 @@ export const CategoryView: React.FC<CategoryViewProps> = ({
       });
     }
 
-    // 4. In stock only filter
+    
     if (inStockOnly) {
       result = result.filter((p) => p.inStock !== false);
     }
 
-    // 5. Sorting
+   
     result.sort((a, b) => {
       if (sortBy === "price-asc") return a.price - b.price;
       if (sortBy === "price-desc") return b.price - a.price;
       if (sortBy === "popularity") {
         return (b.originalPrice || b.price) - (a.originalPrice || a.price);
       }
-      // "newest" default
+    
       return (b.isNewDrop ? 1 : 0) - (a.isNewDrop ? 1 : 0);
     });
 
@@ -109,7 +107,7 @@ export const CategoryView: React.FC<CategoryViewProps> = ({
 
   return (
     <div className="bg-black text-white min-h-screen pb-24">
-      {/* Category Header Banner */}
+    
       <div className="border-b border-neutral-900 bg-neutral-950/60 py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto space-y-3">
           <div className="text-orange-500 font-mono text-xs tracking-widest uppercase flex items-center gap-2">
@@ -126,7 +124,7 @@ export const CategoryView: React.FC<CategoryViewProps> = ({
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
-        {/* Top Control Bar: Total Count, Mobile Filter Button, Sort Dropdown */}
+        
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-6 border-b border-neutral-900 gap-4">
           <div className="flex items-center gap-3">
             <span className="font-mono text-xs uppercase tracking-widest text-neutral-400">
@@ -147,7 +145,7 @@ export const CategoryView: React.FC<CategoryViewProps> = ({
           </div>
 
           <div className="flex items-center gap-4 w-full sm:w-auto justify-between sm:justify-end">
-            {/* Mobile Filter Drawer Trigger */}
+            
             <button
               type="button"
               onClick={() => setIsMobileFilterOpen(true)}
@@ -157,7 +155,6 @@ export const CategoryView: React.FC<CategoryViewProps> = ({
               <span>FILTERS {isFiltered && "(ACTIVE)"}</span>
             </button>
 
-            {/* Sort Dropdown */}
             <div className="flex items-center gap-2">
               <span className="text-xs font-mono text-neutral-500 uppercase tracking-wider hidden sm:inline">
                 SORT BY:
@@ -179,11 +176,11 @@ export const CategoryView: React.FC<CategoryViewProps> = ({
           </div>
         </div>
 
-        {/* Layout Grid: Sidebar Filters + Main Product Grid */}
+       
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 pt-8">
-          {/* DESKTOP FILTER SIDEBAR */}
+        
           <aside className="hidden lg:block space-y-8 pr-4 border-r border-neutral-900">
-            {/* 1. Price Range Slider */}
+            
             <div className="space-y-3">
               <div className="flex items-center justify-between font-mono text-xs uppercase tracking-wider">
                 <span className="text-neutral-400 font-bold">PRICE RANGE</span>
@@ -204,7 +201,7 @@ export const CategoryView: React.FC<CategoryViewProps> = ({
               </div>
             </div>
 
-            {/* 2. Brand Filter Checkboxes */}
+           
             {availableBrands.length > 0 && (
               <div className="space-y-3 pt-4 border-t border-neutral-900">
                 <span className="block font-mono text-xs uppercase tracking-wider text-neutral-400 font-bold">
@@ -226,7 +223,7 @@ export const CategoryView: React.FC<CategoryViewProps> = ({
                               : "border-neutral-700 bg-neutral-950 group-hover:border-neutral-500"
                           }`}
                         >
-                          {checked && <Check className="w-3 h-3 stroke-[3]" />}
+                          {checked && <Check className="w-3 h-3 stroke-3" />}
                         </div>
                         <span>{brand}</span>
                       </label>
@@ -236,7 +233,7 @@ export const CategoryView: React.FC<CategoryViewProps> = ({
               </div>
             )}
 
-            {/* 3. US Size Filter */}
+          
             <div className="space-y-3 pt-4 border-t border-neutral-900">
               <div className="flex items-center justify-between font-mono text-xs uppercase tracking-wider">
                 <span className="text-neutral-400 font-bold">US SIZE</span>
@@ -271,7 +268,7 @@ export const CategoryView: React.FC<CategoryViewProps> = ({
               </div>
             </div>
 
-            {/* 4. In-Stock Only Toggle */}
+         
             <div className="pt-4 border-t border-neutral-900">
               <label className="flex items-center justify-between cursor-pointer select-none">
                 <span className="font-mono text-xs uppercase tracking-wider text-neutral-300 font-bold">
@@ -301,7 +298,7 @@ export const CategoryView: React.FC<CategoryViewProps> = ({
             </div>
           </aside>
 
-          {/* MAIN PRODUCT GRID (3 Columns on Desktop, 4 total grid area) */}
+          
           <main className="lg:col-span-3">
             <ProductGrid
               products={filteredProducts}
@@ -311,7 +308,6 @@ export const CategoryView: React.FC<CategoryViewProps> = ({
         </div>
       </div>
 
-      {/* MOBILE FILTER DRAWER */}
       {isMobileFilterOpen && (
         <div className="fixed inset-0 z-50 lg:hidden flex">
           <div
@@ -335,7 +331,7 @@ export const CategoryView: React.FC<CategoryViewProps> = ({
                 </button>
               </div>
 
-              {/* Price Range */}
+              
               <div className="space-y-3">
                 <div className="flex items-center justify-between font-mono text-xs uppercase">
                   <span className="text-neutral-400 font-bold">PRICE</span>
@@ -352,7 +348,7 @@ export const CategoryView: React.FC<CategoryViewProps> = ({
                 />
               </div>
 
-              {/* Brands */}
+              
               {availableBrands.length > 0 && (
                 <div className="space-y-3 pt-4 border-t border-neutral-900">
                   <span className="block font-mono text-xs uppercase tracking-wider text-neutral-400 font-bold">
@@ -373,7 +369,7 @@ export const CategoryView: React.FC<CategoryViewProps> = ({
                           }`}
                         >
                           {selectedBrands.includes(brand) && (
-                            <Check className="w-3 h-3 stroke-[3]" />
+                            <Check className="w-3 h-3 stroke-3" />
                           )}
                         </div>
                         <span>{brand}</span>
@@ -383,7 +379,7 @@ export const CategoryView: React.FC<CategoryViewProps> = ({
                 </div>
               )}
 
-              {/* Sizes */}
+            
               <div className="space-y-3 pt-4 border-t border-neutral-900">
                 <span className="block font-mono text-xs uppercase tracking-wider text-neutral-400 font-bold">
                   US SIZE
@@ -408,7 +404,7 @@ export const CategoryView: React.FC<CategoryViewProps> = ({
                 </div>
               </div>
 
-              {/* In-Stock */}
+            
               <div className="pt-4 border-t border-neutral-900">
                 <label className="flex items-center justify-between text-xs font-mono uppercase font-bold">
                   <span>IN-STOCK ONLY</span>

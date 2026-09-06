@@ -77,7 +77,7 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
       quantity
     );
 
-    // Open CartDrawer to confirm addition
+   
     openCart();
   };
 
@@ -95,7 +95,7 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
 
   return (
     <div className="bg-black text-white min-h-screen pb-24">
-      {/* Breadcrumb Navigation */}
+      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <nav className="flex items-center space-x-2 text-xs font-mono uppercase tracking-widest text-neutral-500">
           <Link href="/" className="hover:text-orange-500 transition-colors">
@@ -113,21 +113,21 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
         </nav>
       </div>
 
-      {/* Main Product Showcase Section */}
+      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          {/* LEFT: Image Gallery */}
+         
           <div className="lg:col-span-7 flex flex-col-reverse md:flex-row gap-4">
-            {/* Thumbnails list */}
+         
             {galleryImages.length > 1 && (
-              <div className="flex md:flex-col gap-3 overflow-x-auto md:overflow-y-auto pb-2 md:pb-0 scrollbar-none flex-shrink-0">
+              <div className="flex md:flex-col gap-3 overflow-x-auto md:overflow-y-auto pb-2 md:pb-0 scrollbar-none shrink-0">
                 {galleryImages.map((imgUrl, idx) => (
                   <button
                     key={idx}
                     type="button"
                     onClick={() => setSelectedImageIndex(idx)}
                     aria-label={`View angle ${idx + 1}`}
-                    className={`relative w-20 h-24 md:w-22 md:h-28 bg-neutral-900 border transition-all duration-200 overflow-hidden flex-shrink-0 ${
+                    className={`relative w-20 h-24 md:w-22 md:h-28 bg-neutral-900 border transition-all duration-200 overflow-hidden shrink-0 ${
                       selectedImageIndex === idx
                         ? "border-orange-500 ring-2 ring-orange-500/30 scale-100"
                         : "border-neutral-800 opacity-60 hover:opacity-100 hover:border-neutral-600"
@@ -144,8 +144,8 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
               </div>
             )}
 
-            {/* Main Featured Image Display */}
-            <div className="relative flex-1 aspect-square sm:aspect-[4/5] bg-neutral-950 border border-neutral-900 overflow-hidden select-none">
+            
+            <div className="relative flex-1 aspect-square sm:aspect-4/5 bg-neutral-950 border border-neutral-900 overflow-hidden select-none">
               <AnimatePresence mode="wait">
                 <motion.img
                   key={selectedImageIndex}
@@ -161,7 +161,7 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
                 />
               </AnimatePresence>
 
-              {/* Badges on main image */}
+             
               {product.isNewDrop && inStock && (
                 <div className="absolute top-4 left-4 z-10 bg-orange-500 text-black text-xs font-black uppercase tracking-widest px-3 py-1.5 shadow-xl shadow-orange-500/30">
                   NEW DROP
@@ -176,7 +176,7 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
                 </div>
               )}
 
-              {/* Wishlist Button */}
+              
               <button
                 type="button"
                 onClick={() => setIsWishlisted(!isWishlisted)}
@@ -194,9 +194,9 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
             </div>
           </div>
 
-          {/* RIGHT: Product Details & Controls */}
+         
           <div className="lg:col-span-5 space-y-8">
-            {/* Header: Brand, Title, Price */}
+      
             <div className="space-y-3 border-b border-neutral-900 pb-6">
               {product.brand && (
                 <div className="text-xs font-mono uppercase tracking-[0.2em] text-neutral-400">
@@ -224,7 +224,7 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
                 )}
               </div>
 
-              {/* Colorway Indicator */}
+             
               {product.colorway && (
                 <div className="pt-2 text-xs font-mono text-neutral-400 uppercase tracking-wider flex items-center gap-2">
                   <span className="text-neutral-500">COLORWAY:</span>
@@ -233,7 +233,7 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
               )}
             </div>
 
-            {/* Description */}
+        
             {product.description && (
               <div className="space-y-3">
                 <h2 className="text-xs font-mono text-neutral-400 uppercase tracking-widest">
@@ -245,7 +245,7 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
               </div>
             )}
 
-            {/* US Size Selector */}
+            
             <div className="space-y-3">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-mono uppercase tracking-widest text-neutral-400">
@@ -297,11 +297,11 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
               )}
             </div>
 
-            {/* Quantity Stepper & CTA Buttons */}
+        
             <div className="space-y-4 pt-2">
               {inStock ? (
                 <div className="space-y-4">
-                  {/* Quantity Control Row */}
+                
                   <div className="flex items-center gap-4">
                     <span className="text-xs font-mono uppercase tracking-widest text-neutral-400">
                       QUANTITY:
@@ -315,7 +315,7 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
                       >
                         -
                       </button>
-                      <span className="px-4 py-2 font-mono text-xs font-bold text-white min-w-[32px] text-center">
+                      <span className="px-4 py-2 font-mono text-xs font-bold text-white min-w-8 text-center">
                         {quantity}
                       </span>
                       <button
@@ -329,7 +329,7 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
                     </div>
                   </div>
 
-                  {/* Add to Cart Button */}
+              
                   <button
                     type="button"
                     onClick={handleAddToCart}
@@ -340,7 +340,7 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
                   </button>
                 </div>
               ) : (
-                /* Sold Out / Notify Me Button */
+        
                 <div className="space-y-3">
                   <button
                     type="button"
@@ -357,23 +357,22 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
               )}
             </div>
 
-            {/* Product Feature Highlights / Trust Badges */}
             <div className="border-t border-neutral-900 pt-6 space-y-3 text-xs font-mono text-neutral-400 uppercase tracking-wider">
               <div className="flex items-center gap-3">
-                <Truck className="w-4 h-4 text-orange-500 flex-shrink-0" />
+                <Truck className="w-4 h-4 text-orange-500 shrink-0" />
                 <span>EXPRESS WORLDWIDE DISPATCH WITHIN 24 HOURS</span>
               </div>
               <div className="flex items-center gap-3">
-                <ShieldCheck className="w-4 h-4 text-orange-500 flex-shrink-0" />
+                <ShieldCheck className="w-4 h-4 text-orange-500 shrink-0" />
                 <span>100% VERIFIED AUTHENTIC & ORIGINAL PACKAGING</span>
               </div>
               <div className="flex items-center gap-3">
-                <RotateCcw className="w-4 h-4 text-orange-500 flex-shrink-0" />
+                <RotateCcw className="w-4 h-4 text-orange-500 shrink-0" />
                 <span>HASSLE-FREE 14-DAY RETURNS ON UNWORN ITEMS</span>
               </div>
             </div>
 
-            {/* Tech Specs / Details List */}
+ 
             {product.details && product.details.length > 0 && (
               <div className="border-t border-neutral-900 pt-6 space-y-3">
                 <h3 className="text-xs font-mono text-neutral-400 uppercase tracking-widest">
@@ -393,7 +392,7 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
         </div>
       </div>
 
-      {/* "You Might Also Like" Related Products Section */}
+
       {relatedProducts && relatedProducts.length > 0 && (
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 border-t border-neutral-900">
           <div className="mb-10">
@@ -410,7 +409,7 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
         </section>
       )}
 
-      {/* "Notify Me" Restock Modal */}
+  
       <AnimatePresence>
         {isNotifyOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4">

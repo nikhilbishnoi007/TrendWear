@@ -29,15 +29,11 @@ export default function LoginPage() {
 
   const validateForm = (): boolean => {
     const newErrors: { email?: string; password?: string } = {};
-
-    // Email validation
     if (!email.trim()) {
       newErrors.email = "Email address is required.";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
       newErrors.email = "Please enter a valid email address.";
     }
-
-    // Password validation
     if (!password) {
       newErrors.password = "Password is required.";
     } else if (password.length < 6) {
@@ -56,8 +52,6 @@ export default function LoginPage() {
     }
 
     setIsSubmitting(true);
-
-    // Mock local authentication state simulation
     setTimeout(() => {
       setIsSubmitting(false);
       setLoginSuccess(true);
@@ -81,8 +75,8 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-[calc(100vh-5rem)] bg-black text-white flex items-center justify-center px-4 sm:px-6 lg:px-8 py-16 relative overflow-hidden">
-      {/* Ambient Lighting */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[350px] bg-orange-600/10 rounded-full blur-[140px] pointer-events-none" />
+   
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-125 h-87.5] bg-orange-600/10 rounded-full blur-[140px] pointer-events-none" />
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -90,7 +84,7 @@ export default function LoginPage() {
         transition={{ duration: 0.5 }}
         className="w-full max-w-md relative z-10"
       >
-        {/* Brand Header */}
+      
         <div className="text-center space-y-2 mb-8">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-neutral-900 border border-neutral-800 text-orange-500 text-[11px] font-mono tracking-widest uppercase mb-2">
             <Sparkles className="w-3 h-3 text-orange-500" />
@@ -106,7 +100,7 @@ export default function LoginPage() {
           </p>
         </div>
 
-        {/* Card Container */}
+       
         <div className="bg-neutral-950 border border-neutral-850 p-6 sm:p-8 shadow-2xl space-y-6">
           {loginSuccess ? (
             <div className="py-8 text-center space-y-4">
@@ -124,7 +118,7 @@ export default function LoginPage() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} noValidate className="space-y-5">
-              {/* Email Input */}
+             
               <div className="space-y-1.5">
                 <label
                   htmlFor="login-email"
@@ -152,13 +146,13 @@ export default function LoginPage() {
                 </div>
                 {errors.email && (
                   <p className="text-[11px] font-mono text-red-400 flex items-center gap-1 pt-0.5">
-                    <AlertCircle className="w-3 h-3 flex-shrink-0" />
+                    <AlertCircle className="w-3 h-3 shrink-0" />
                     <span>{errors.email}</span>
                   </p>
                 )}
               </div>
 
-              {/* Password Input */}
+             
               <div className="space-y-1.5">
                 <div className="flex items-center justify-between">
                   <label
@@ -209,13 +203,12 @@ export default function LoginPage() {
                 </div>
                 {errors.password && (
                   <p className="text-[11px] font-mono text-red-400 flex items-center gap-1 pt-0.5">
-                    <AlertCircle className="w-3 h-3 flex-shrink-0" />
+                    <AlertCircle className="w-3 h-3 shrink-0" />
                     <span>{errors.password}</span>
                   </p>
                 )}
               </div>
 
-              {/* Submit Button */}
               <button
                 type="submit"
                 disabled={isSubmitting}
@@ -233,7 +226,7 @@ export default function LoginPage() {
             </form>
           )}
 
-          {/* Switch to Signup */}
+        
           <div className="pt-4 border-t border-neutral-900 text-center text-xs font-mono uppercase tracking-wider text-neutral-400">
             <span>NOT A MEMBER YET? </span>
             <Link
@@ -245,14 +238,14 @@ export default function LoginPage() {
           </div>
         </div>
 
-        {/* Security Micro Badge */}
+        
         <div className="mt-6 flex items-center justify-center gap-2 text-[10px] font-mono text-neutral-500 uppercase tracking-widest">
           <ShieldCheck className="w-3.5 h-3.5 text-orange-500" />
           <span>ENCRYPTED CLIENT SESSION</span>
         </div>
       </motion.div>
 
-      {/* Forgot Password Modal */}
+      
       <AnimatePresence>
         {isForgotPasswordOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4">

@@ -17,7 +17,7 @@ export const CartDrawer: React.FC = () => {
     totalPrice,
   } = useCart();
 
-  // Close on Escape key press
+ 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape" && isCartOpen) {
@@ -42,7 +42,7 @@ export const CartDrawer: React.FC = () => {
     <AnimatePresence>
       {isCartOpen && (
         <div className="fixed inset-0 z-50 overflow-hidden">
-          {/* Backdrop Overlay */}
+          
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -53,7 +53,7 @@ export const CartDrawer: React.FC = () => {
             aria-hidden="true"
           />
 
-          {/* Right-sliding Drawer Panel */}
+         
           <div className="fixed inset-y-0 right-0 max-w-full flex pl-10">
             <motion.div
               initial={{ x: "100%" }}
@@ -67,7 +67,7 @@ export const CartDrawer: React.FC = () => {
               }}
               className="w-screen max-w-md bg-neutral-950 border-l border-neutral-850 text-white shadow-2xl flex flex-col justify-between"
             >
-              {/* Drawer Header */}
+             
               <div className="px-6 py-5 border-b border-neutral-900 flex items-center justify-between bg-black/50 backdrop-blur-md">
                 <div className="flex items-center gap-2.5">
                   <ShoppingBag className="w-5 h-5 text-orange-500" />
@@ -89,11 +89,11 @@ export const CartDrawer: React.FC = () => {
                 </button>
               </div>
 
-              {/* Drawer Content */}
+            
               <div className="flex-1 overflow-y-auto px-6 py-6 divide-y divide-neutral-900">
                 {cart.length === 0 ? (
                   /* Empty State */
-                  <div className="h-full min-h-[350px] flex flex-col items-center justify-center text-center py-12 px-4 space-y-6">
+                  <div className="h-full min-h-87.5 flex flex-col items-center justify-center text-center py-12 px-4 space-y-6">
                     <div className="w-20 h-20 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-600">
                       <ShoppingBag className="w-10 h-10 stroke-[1.2]" />
                     </div>
@@ -123,8 +123,8 @@ export const CartDrawer: React.FC = () => {
                         key={`${item.id}-${item.size || ""}-${item.color || ""}`}
                         className="flex gap-4 pt-6 first:pt-0 group"
                       >
-                        {/* Thumbnail */}
-                        <div className="relative w-20 h-24 sm:w-24 sm:h-28 bg-neutral-900 flex-shrink-0 overflow-hidden border border-neutral-850">
+                       
+                        <div className="relative w-20 h-24 sm:w-24 sm:h-28 bg-neutral-900 shrink-0 overflow-hidden border border-neutral-850">
                           {item.image ? (
                             // eslint-disable-next-line @next/next/no-img-element
                             <img
@@ -139,7 +139,7 @@ export const CartDrawer: React.FC = () => {
                           )}
                         </div>
 
-                        {/* Item Details */}
+                        
                         <div className="flex-1 flex flex-col justify-between py-0.5">
                           <div className="space-y-1">
                             <div className="flex items-start justify-between gap-2">
@@ -180,7 +180,7 @@ export const CartDrawer: React.FC = () => {
                             </div>
                           </div>
 
-                          {/* Quantity Controls & Subtotal */}
+                 
                           <div className="flex items-center justify-between pt-2">
                             <div className="inline-flex items-center border border-neutral-800 bg-black">
                               <button
@@ -198,7 +198,7 @@ export const CartDrawer: React.FC = () => {
                                 <Minus className="w-3 h-3" />
                               </button>
 
-                              <span className="px-3 py-1 font-mono text-xs font-bold text-white min-w-[28px] text-center">
+                              <span className="px-3 py-1 font-mono text-xs font-bold text-white min-w-7 text-center">
                                 {item.quantity}
                               </span>
 
@@ -229,7 +229,7 @@ export const CartDrawer: React.FC = () => {
                 )}
               </div>
 
-              {/* Drawer Footer / Subtotal & Checkout */}
+       
               {cart.length > 0 && (
                 <div className="p-6 bg-neutral-950 border-t border-neutral-900 space-y-4">
                   <div className="space-y-2">

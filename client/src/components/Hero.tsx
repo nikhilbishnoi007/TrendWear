@@ -45,10 +45,10 @@ export const Hero: React.FC = () => {
         <div className="absolute inset-0 bg-linear-to-b from-black/85 via-black/75 to-black" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,var(--tw-gradient-stops))] from-transparent via-black/60 to-black" />
 
-        {/* Ambient Electric Orange Atmospheric Glow */}
+     
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-137.5 h-87.5 bg-orange-500/15 rounded-full blur-[150px] pointer-events-none" />
 
-        {/* Subtle Streetwear Grid Texture */}
+      
         <div
           className="absolute inset-0 opacity-[0.04] pointer-events-none"
           style={{
@@ -58,14 +58,14 @@ export const Hero: React.FC = () => {
         />
       </div>
 
-      {/* Hero Core Content */}
+    
       <motion.div
         className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-20 text-center flex flex-col items-center"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        {/* "New Drop" Pulsing Badge */}
+     
         <motion.div variants={itemVariants} className="mb-6">
           <div className="inline-flex items-center gap-2.5 px-4 py-1.5 bg-neutral-950/90 border border-neutral-800 rounded-none shadow-2xl backdrop-blur-md">
             <span className="relative flex h-2.5 w-2.5">
@@ -83,7 +83,6 @@ export const Hero: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* Bold Large Headline */}
         <motion.h1
           variants={itemVariants}
           className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter uppercase leading-[0.9] text-white select-none mb-6"
@@ -94,7 +93,6 @@ export const Hero: React.FC = () => {
           </span>
         </motion.h1>
 
-        {/* Subheadline */}
         <motion.p
           variants={itemVariants}
           className="max-w-2xl text-neutral-300 text-sm sm:text-base md:text-lg font-light tracking-wide leading-relaxed mb-10 text-balance"
@@ -103,12 +101,11 @@ export const Hero: React.FC = () => {
           Precision-tailored aesthetics built for the bold and the underground.
         </motion.p>
 
-        {/* Call to Action Buttons */}
         <motion.div
           variants={itemVariants}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto"
         >
-          {/* Framer Motion Animated "Shop Now" Button */}
+         
           <motion.div
             whileHover={{
               scale: 1.05,
@@ -127,7 +124,7 @@ export const Hero: React.FC = () => {
             </Link>
           </motion.div>
 
-          {/* Secondary Lookbook Button */}
+        
           <motion.div
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
@@ -142,7 +139,7 @@ export const Hero: React.FC = () => {
           </motion.div>
         </motion.div>
 
-        {/* Bottom Micro Badges */}
+      
         <motion.div
           variants={itemVariants}
           className="mt-16 pt-8 border-t border-neutral-900/80 flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-[11px] font-mono text-neutral-500 uppercase tracking-widest"
