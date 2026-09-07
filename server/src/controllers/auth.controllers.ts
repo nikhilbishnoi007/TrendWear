@@ -8,10 +8,11 @@ interface ReqBody {
     email: string,
     password: string,
 }
+
 interface Res {
     message: string,
     success: boolean,
-    data?: object
+    data?: object;
 }
 
 export const register=async (req:Request<{},{},ReqBody>,res:Response<Res>)=>{
@@ -24,15 +25,15 @@ export const register=async (req:Request<{},{},ReqBody>,res:Response<Res>)=>{
         })
     }
     const hashPassword=await bcrypt.hash(password,10)
-    const newUser=userModel.create({
+    const newUser=await userModel.create({
         username,
         email,
         password:hashPassword
     })
-
+    
    res.status(201).json({
     message:"user registerd",
     success:true,
-    data:newUser
+    data:newUser,
    })
 }
