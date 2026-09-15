@@ -7,7 +7,8 @@ services:
       - ./server/.env
     extra_hosts:
       - "host.docker.internal:host-gateway"
-
+    environment:
+      - MONGO_URI=mongodb://host.docker.internal:27017/trendywear
   client:
     build: ./client
     ports:
