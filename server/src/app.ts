@@ -5,7 +5,7 @@ import cookieParser from "cookie-parser";
 import { Strategy } from "passport-google-oauth20";
 import cors from 'cors'
 import config from "./config/config";
-import { authRouter } from "./routes/auth.routes";
+import authRouter  from "./routes/auth.routes";
 
 
 const app=express()
@@ -30,4 +30,5 @@ app.get("/",(req:Request,res:Response)=>{
     res.send("server is runnig")
 })
 app.use("/api/auth",authRouter)
+
 export default app
