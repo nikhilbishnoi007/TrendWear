@@ -3,8 +3,14 @@ services:
     build: ./server
     ports:
       - "5000:5000"
+    env_file:
+      - ./server/.env
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
   client:
     build: ./client
     ports:
       - "3000:3000"
+    env_file:
+      - ./client/.env
