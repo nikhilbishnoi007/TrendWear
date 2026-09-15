@@ -5,6 +5,7 @@ interface User extends Document{
  email:string,
  password:string,
  refreshToken?:string
+ role:string
 }
 
 const userSchema=new Schema<User>({
@@ -26,6 +27,10 @@ const userSchema=new Schema<User>({
     },
     refreshToken:{
         type:String,
+    },
+    role:{
+        type:String,
+        default:"user"
     }
 },{
     timestamps:true
