@@ -1,12 +1,13 @@
 import { Request, Response } from 'express'
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
-import userModel from '../models/users.model'
+import {userModel} from '../models/users.model'
 import config from '../config/config'
+import crypto from "crypto"
 
 
 interface ReqBody {
-    username: string,
+    username?: string,
     email: string,
     password: string,
 }
@@ -99,12 +100,15 @@ export const login = async (req: Request<{}, {}, ReqBody>, res: Response<Res>) =
         }
         const refreshToken = jwt.sign({ id: user._id }, config.REFRESH_TOKEN_SECRET, { expiresIn: "7d" })
         const accessToken = jwt.sign({ email: user.email, id: user._id }, config.ACCESS_TOKEN_SECRET, { expiresIn: "1h" })
+        user.refreshToken=refreshToken
+        await user.save()
         res.cookie("refreshToken", refreshToken, {
             httpOnly: true,
             secure: false,
             sameSite: "lax",
             maxAge: 7 * 24 * 60 * 60 * 1000
         })
+        
         const sentuser =await  userModel.findById(user._id).select("-password -refreshToken")
         if (!sentuser) {
             return res.status(404).json({
