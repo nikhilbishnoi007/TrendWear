@@ -1,5 +1,6 @@
 import mongoose ,{Schema,Document} from "mongoose";
 
+
 interface User extends Document{
  username:string,
  email:string,
@@ -36,6 +37,5 @@ const userSchema=new Schema<User>({
     timestamps:true
 })
 
-const userModel=mongoose.model<User>("users",userSchema)
+export const userModel=mongoose.model<User>("users",userSchema)
 
-export default userModel
