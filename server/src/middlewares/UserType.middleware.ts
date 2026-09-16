@@ -9,6 +9,7 @@ interface Res{
 }
 
 export const isAdmin=async (req:Request,res:Response<Res>,next:NextFunction)=>{
+    try {
     const refreshToken=req.cookies.refreshToken
     if(!refreshToken){
         return res.status(402).json({
@@ -35,6 +36,12 @@ export const isAdmin=async (req:Request,res:Response<Res>,next:NextFunction)=>{
         message:"User is not authorize to perform this task",
         success:false
     })
-    next()
 }
+    next()
+     } catch (error) {
+       res.status(500).json({
+        message:"Internal Server Error",
+        success:false
+       })
+    }
 }

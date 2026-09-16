@@ -8,6 +8,7 @@ interface Res {
 }
 
 export const getUsers=async(req:Request,res:Response<Res>)=>{
+    try {
      const allUsers=await userModel.find()
      if(allUsers.length==0){
           return res.status(404).json({
@@ -20,4 +21,10 @@ export const getUsers=async(req:Request,res:Response<Res>)=>{
         success:true,
         data:allUsers
      })
+      } catch (error) {
+        res.status(500).json({
+         message:"Internal Serveer Error",
+         success:false
+        })
+    }
 }
