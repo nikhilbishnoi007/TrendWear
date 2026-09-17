@@ -11,6 +11,9 @@ if (!process.env.ACCESS_TOKEN_SECRET) {
 if (!process.env.REFRESH_TOKEN_SECRET) {
     throw new Error("provide refresh token secret")
 }
+if(!process.env.REDIS_URL){
+    throw new Error("provide redis url ")
+}
 
 const config = {
     PORT: process.env.PORT,
@@ -18,6 +21,7 @@ const config = {
     DB_URL: process.env.DB_URL,
     ACCESS_TOKEN_SECRET: process.env.ACCESS_TOKEN_SECRET,
     REFRESH_TOKEN_SECRET: process.env.REFRESH_TOKEN_SECRET,
+    REDIS_URL:process.env.REDIS_URL
 }
 
 export default config
