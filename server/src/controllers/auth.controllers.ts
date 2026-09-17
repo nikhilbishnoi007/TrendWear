@@ -3,18 +3,15 @@ import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
 import {userModel} from '../models/users.model'
 import config from '../config/config'
-import crypto from "crypto"
-import Redis from 'ioredis'
-
-const redis=new Redis(config.REDIS_URL)
+import { redis } from '../app'
 
 
-interface ReqBody {
+export interface ReqBody {
     username?: string,
     email: string,
     password: string,
 }
-interface Res {
+export  interface Res {
     message: string,
     success: boolean,
     data?: object;

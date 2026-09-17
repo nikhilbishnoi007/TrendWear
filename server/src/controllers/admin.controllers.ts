@@ -1,14 +1,9 @@
 import { json, Request, Response } from 'express'
 import { userModel } from '../models/users.model';
-import Redis from 'ioredis';
+import { redis } from '../app';
 import config from '../config/config';
+import { Res } from './auth.controllers';
 
-const redis=new Redis(config.REDIS_URL)
-interface Res {
-    message: string,
-    success: boolean,
-    data?: object;
-}
 
 export const getUsers=async(req:Request,res:Response<Res>)=>{
     try {

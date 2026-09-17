@@ -2,11 +2,7 @@ import { Request,Response,NextFunction } from "express";
 import { userModel } from "../models/users.model";
 import jwt, { JwtPayload } from "jsonwebtoken"
 import config from "../config/config";
-
-interface Res{
-    message:string,
-    success:boolean,
-}
+import { Res } from "../controllers/auth.controllers";
 
 export const isAdmin=async (req:Request,res:Response<Res>,next:NextFunction)=>{
     try {

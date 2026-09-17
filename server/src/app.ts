@@ -4,11 +4,12 @@ import cors from 'cors'
 import config from "./config/config";
 import authRouter  from "./routes/auth.routes";
 import adminRouter from "./routes/admin.routes";
+import Redis from "ioredis";
 
 
 
  const app=express()
-
+export const redis=new Redis(config.REDIS_URL)
 
 app.use(express.json({limit:"16kb"}))
 app.use(express.urlencoded({extended:true}))
