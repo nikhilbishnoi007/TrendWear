@@ -4,7 +4,7 @@
   "description": "backend for trendywear",
   "main": "server.js",
   "scripts": {
-    "dev": "tsx watch src/server.ts",
+    "dev": "nodemon dist/server.js",
     "build": "tsc",
     "start": "node dist/server.js"
   },
