@@ -1,6 +1,9 @@
-import { Request, Response } from 'express'
+import { json, Request, Response } from 'express'
 import { userModel } from '../models/users.model';
+import Redis from 'ioredis';
+import config from '../config/config';
 
+const redis=new Redis(config.REDIS_URL)
 interface Res {
     message: string,
     success: boolean,
@@ -9,17 +12,26 @@ interface Res {
 
 export const getUsers=async(req:Request,res:Response<Res>)=>{
     try {
-     const allUsers=await userModel.find()
-     if(allUsers.length==0){
+    const data=await redis.get("users")
+    if(data){
+        return res.status(200).json({
+        message:"Users Find",
+        success:true,
+        data:JSON.parse(data)
+     })
+    }
+     const users=await userModel.find()
+     if(users.length==0){
           return res.status(404).json({
             message:"no user exist",
             success:false
         })
      }
+     await redis.set("users",JSON.stringify(users))
      res.status(200).json({
         message:"Users Find",
         success:true,
-        data:allUsers
+        data:users
      })
       } catch (error) {
         res.status(500).json({

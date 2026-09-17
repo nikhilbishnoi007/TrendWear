@@ -4,6 +4,9 @@ import bcrypt from 'bcrypt'
 import {userModel} from '../models/users.model'
 import config from '../config/config'
 import crypto from "crypto"
+import Redis from 'ioredis'
+
+const redis=new Redis(config.REDIS_URL)
 
 
 interface ReqBody {
@@ -41,6 +44,7 @@ export const register = async (req: Request<{}, {}, ReqBody>, res: Response<Res>
             })
         }
 
+        await redis.del("users")
         const salt = await bcrypt.genSalt(10)
         const hash = await bcrypt.hash(password, salt)
         const newuser = await userModel.create({
@@ -65,7 +69,6 @@ export const register = async (req: Request<{}, {}, ReqBody>, res: Response<Res>
                 success: false
             });
         }
-
         res.status(201).json({
             message: "User Registered  Successfully",
             success: true,
