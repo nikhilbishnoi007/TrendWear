@@ -4,7 +4,7 @@ import { isAdmin } from "../middlewares/UserType.middleware";
 import { RateLimiter } from "../middlewares/rateLimit.middleware";
 const adminRouter=Router()
 
-adminRouter.get("/getusers",RateLimiter,adminController.getUsers)
+adminRouter.get("/getusers",isAdmin,RateLimiter,adminController.getUsers)
 
 
 export default adminRouter
