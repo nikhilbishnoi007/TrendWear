@@ -8,11 +8,13 @@ import Redis from "ioredis";
 
 
 
- const app=express()
+const app=express()
 export const redis=new Redis(config.REDIS_URL)
+redis.on("connect", () => console.log("Redis connected"));
+redis.on("error", (err) => console.error("Redis error:", err));
 
 app.use(express.json({limit:"16kb"}))
-app.use(express.urlencoded({extended:true}))
+app.use(express.urlencoded({ extended: true, limit: "16kb" }))
 app.use(cookieParser())
 app.use(cors({
     origin:config.Client_Route,
